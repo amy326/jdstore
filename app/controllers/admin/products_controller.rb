@@ -3,7 +3,12 @@ class Admin::ProductsController < ApplicationController
    before_action :authenticate_user!
    before_action :admin_required
    def index
-      @products = Product.all
+
+      if params[:category_id].blank?
+         @products = Product.all
+      else
+         @products = Product.where("category_id = ?", params[:category_id].to_i)
+      end
    end
 
    def new

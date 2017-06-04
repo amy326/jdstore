@@ -2,13 +2,17 @@ Rails.application.routes.draw do
 
    root 'welcome#index'
    devise_for :users
+
    namespace :admin do
       resources :products
       resources :menus
-      resources :category do
-         resources :pruducts
+
+      resources :categories do
+         resources :products
          resources :menus
       end
+
+
       resources :orders do
          member do
             post :cancel
@@ -17,6 +21,7 @@ Rails.application.routes.draw do
             post :return
          end
       end
+
    end
 
    resources :products do
@@ -33,10 +38,14 @@ Rails.application.routes.draw do
    end
 
    resources :cart_items
-   resources :category do
+
+   resources :menus
+
+   resources :categories do
       resources :products
       resources :menus
    end
+
    resources :orders do
       member do
          post :pay_with_alipay
@@ -44,7 +53,6 @@ Rails.application.routes.draw do
          post :apply_to_cancel
       end
  end
-
 
 
    namespace :account do

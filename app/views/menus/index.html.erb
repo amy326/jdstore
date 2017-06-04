@@ -1,0 +1,48 @@
+<!-- <div class="row">
+   <% @menus.each do |menu| %>
+   <div class="col-xs-6 col-md-3">
+      <%= link_to menu_path(menu) do %>
+         <% if menu.image.present? %>
+            <%= image_tag(menu.image.thumb.url, class: "thumbnail")%>
+         <% else %>
+            <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail")%>
+         <% end %>
+      <% end %>
+   </div>
+   <% end %>
+</div> -->
+
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th width="400">Menu Pic</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Category</th>
+
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @menus.each do |menu| %>
+      <tr>
+        <td>
+          <%= menu.id %>
+        </td>
+        <td>
+            <% if menu.image.present? %>
+              <%= image_tag(menu.image.thumb.url, class: "thumbnail") %>
+            <% else %>
+              <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
+            <% end %>
+        </td>
+        <td> <%= menu.title %> </td>
+        <td> <%= menu.price %> </td>
+        <td> <%= menu.category.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

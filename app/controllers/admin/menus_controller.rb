@@ -2,7 +2,9 @@ class Admin::MenusController < ApplicationController
    layout "admin"
    before_action :authenticate_user!
    before_action :admin_required
+
    def index
+
       if params[:category].blank?
          @menus = Menu.all
       else
@@ -14,6 +16,7 @@ class Admin::MenusController < ApplicationController
    def new
       @menu = Menu.new
       @categories = Category.all.map { |c| [c.name, c.id]}
+
    end
 
 

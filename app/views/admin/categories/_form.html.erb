@@ -9,4 +9,11 @@
 <div class="form-actions">
 	<%= f.button :submit %>
 </div>
+
+<div class="group">
+  <%= select_tag( :category_id, options_for_select(@categories), :prompt => '类型')%>
+</div>
+
+
+
 <% end %>

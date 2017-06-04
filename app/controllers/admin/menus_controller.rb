@@ -3,7 +3,12 @@ class Admin::MenusController < ApplicationController
    before_action :authenticate_user!
    before_action :admin_required
    def index
-      @menus = Menu.all
+      if params[:category].blank?
+         @menus = Menu.all
+      else
+         @category_id = Category.find_by(name: params[:category]).id
+         @menus = Menu.where(category_id: @category_id)
+      end
    end
 
    def new
@@ -49,6 +54,6 @@ class Admin::MenusController < ApplicationController
    private
 
    def menu_params
-      params.require(:menu).permit(:title, :description, :quantity, :price, :image, :category_name)
+      params.require(:menu).permit(:title, :description, :quantity, :price, :image, :category_name, :category_id)
    end
 end

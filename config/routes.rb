@@ -5,7 +5,10 @@ Rails.application.routes.draw do
    namespace :admin do
       resources :products
       resources :menus
-      resources :category
+      resources :category do
+         resources :pruducts
+         resources :menus
+      end
       resources :orders do
          member do
             post :cancel
@@ -30,7 +33,10 @@ Rails.application.routes.draw do
    end
 
    resources :cart_items
-   resources :category
+   resources :category do
+      resources :products
+      resources :menus
+   end
    resources :orders do
       member do
          post :pay_with_alipay

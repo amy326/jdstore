@@ -29,5 +29,11 @@
        <%= f.association :category %>  <!--simple_form_for格式 -->
    </div>
 
+   <!--以下是 下拉选单的另一种表达写法
+     <div class="group">
+        <%= select_tag(:category_id, options_for_select(@categories), :prompt => 'Select one')%>
+     </div> -->
+
+
 <%= f.submit "Submit", data: { disable_with: "Submitting..."} %>
 <% end %>
